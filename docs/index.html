@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paper Trading Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <h1>📊 Paper Trading Dashboard</h1>
+    <div class="row">
+      <button id="refreshBtn">새로고침</button>
+      <span id="updatedAt">-</span>
+    </div>
+
+    <section class="card" id="summary"></section>
+    <section class="card">
+      <h2>Signals</h2>
+      <div id="signals"></div>
+    </section>
+    <section class="card">
+      <h2>Alerts (fills/events)</h2>
+      <div id="alerts"></div>
+    </section>
+    <section class="card">
+      <h2>Open Positions</h2>
+      <div id="positions"></div>
+    </section>
+    <section class="card">
+      <h2>Recent Trades (20)</h2>
+      <div id="trades"></div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
