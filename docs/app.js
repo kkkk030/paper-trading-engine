@@ -2,6 +2,7 @@ async function loadData() {
   const ts = Date.now();
   const candidates = [
     `./latest_cycle.json?ts=${ts}`,
+    `https://raw.githubusercontent.com/kkkk030/paper-trading-engine/main/docs/latest_cycle.json?ts=${ts}`,
     `../reports/latest_cycle.json?ts=${ts}`,
     `./docs/latest_cycle.json?ts=${ts}`,
   ];
