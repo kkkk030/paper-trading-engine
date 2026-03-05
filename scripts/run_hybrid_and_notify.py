@@ -37,11 +37,21 @@ def load_recent_trades(path: Path, limit: int = 20):
     return out
 
 
+def publish_docs_snapshot(mode: str):
+    try:
+        subprocess.run(["git", "add", "docs/latest_cycle.json"], cwd=ROOT, check=True)
+        subprocess.run(["git", "commit", "-m", f"chore: publish {mode} cycle snapshot"], cwd=ROOT, check=False)
+        subprocess.run(["git", "push", "origin", "main"], cwd=ROOT, check=False)
+    except Exception:
+        pass
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--mode", choices=["entry", "risk"], default="entry")
     p.add_argument("--notify", action="store_true")
     p.add_argument("--summary", action="store_true")
+    p.add_argument("--publish", action="store_true", help="docs/latest_cycle.json을 GitHub(main)로 푸시")
     args = p.parse_args()
 
     cfg_path = ROOT / "config" / "strategy_v1.json"
@@ -75,6 +85,9 @@ def main():
     if args.notify and alerts:
         text = "\n".join(["[Paper] 체결 이벤트"] + alerts[:8])
         send_event(text)
+
+    if args.publish:
+        publish_docs_snapshot(args.mode)
 
     if args.summary:
         d = broker.state["daily"]
