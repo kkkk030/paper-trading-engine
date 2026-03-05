@@ -1,7 +1,25 @@
 async function loadData() {
-  const res = await fetch('./latest_cycle.json?ts=' + Date.now());
-  if (!res.ok) throw new Error('latest_cycle.json 로드 실패');
-  return await res.json();
+  const ts = Date.now();
+  const candidates = [
+    `./latest_cycle.json?ts=${ts}`,
+    `../reports/latest_cycle.json?ts=${ts}`,
+    `./docs/latest_cycle.json?ts=${ts}`,
+  ];
+
+  let lastErr = null;
+  for (const url of candidates) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) {
+        lastErr = new Error(`${url} (${res.status})`);
+        continue;
+      }
+      return await res.json();
+    } catch (e) {
+      lastErr = e;
+    }
+  }
+  throw new Error(`latest_cycle.json 로드 실패: ${lastErr?.message || 'unknown error'}`);
 }
 
 function won(n){return Number(n||0).toLocaleString('ko-KR')}
