@@ -1,0 +1,12 @@
+{
+  "symbols": ["KRW-BTC", "KRW-ETH", "KRW-SOL", "KRW-XRP"],
+  "timeframes": {"main": "minute15", "confirm": "minute60", "timing": "minute5"},
+  "capital": 10000000,
+  "risk_per_trade": 0.006,
+  "daily_loss_limit": -0.05,
+  "max_positions": 4,
+  "entry_score_threshold": 70,
+  "take_profit": {"tp1_r": 1.8, "tp1_size": 0.3, "tp2_r": 3.0, "tp2_size": 0.3, "runner_size": 0.4},
+  "reentry_cooldown_minutes": 45,
+  "fee_rate": 0.0005
+}

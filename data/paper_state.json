@@ -1,0 +1,13 @@
+{
+  "equity": 10000000.0,
+  "cash": 10000000.0,
+  "positions": {},
+  "cooldowns": {},
+  "daily": {
+    "date": "2026-03-05",
+    "start_equity": 10000000.0,
+    "realized": 0.0,
+    "fees": 0.0
+  },
+  "fee_total": 0.0
+}

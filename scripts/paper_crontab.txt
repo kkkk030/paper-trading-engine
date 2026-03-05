@@ -1,0 +1,11 @@
+SHELL=/bin/zsh
+PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+# Paper trading engine - entry every 15m (includes signal calc + optional fills)
+*/15 * * * * cd /Users/hwabaek/.openclaw/workspace/projects/paper-trading-engine && /usr/bin/python3 scripts/run_hybrid_and_notify.py --mode entry --notify >> logs/cron_entry.log 2>&1
+
+# Paper trading engine - risk monitor every 1m (position management only)
+* * * * * cd /Users/hwabaek/.openclaw/workspace/projects/paper-trading-engine && /usr/bin/python3 scripts/run_hybrid_and_notify.py --mode risk --notify >> logs/cron_risk.log 2>&1
+
+# Standard summary every 4h
+0 */4 * * * cd /Users/hwabaek/.openclaw/workspace/projects/paper-trading-engine && /usr/bin/python3 scripts/run_hybrid_and_notify.py --mode risk --summary >> logs/cron_summary.log 2>&1

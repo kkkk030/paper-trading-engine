@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2026-03-05T04:04:47.869407+00:00",
+  "signals": [
+    {
+      "symbol": "KRW-BTC",
+      "score": 33.2,
+      "regime": "DOWN",
+      "action": "EXIT",
+      "reason": "ret5=+0.12% ret20=+0.23% volx=0.22 regime=DOWN"
+    },
+    {
+      "symbol": "KRW-ETH",
+      "score": 31.8,
+      "regime": "DOWN",
+      "action": "EXIT",
+      "reason": "ret5=+0.03% ret20=-0.19% volx=0.12 regime=DOWN"
+    },
+    {
+      "symbol": "KRW-SOL",
+      "score": 30.8,
+      "regime": "DOWN",
+      "action": "EXIT",
+      "reason": "ret5=+0.00% ret20=-0.98% volx=0.10 regime=DOWN"
+    },
+    {
+      "symbol": "KRW-XRP",
+      "score": 32.0,
+      "regime": "DOWN",
+      "action": "EXIT",
+      "reason": "ret5=+0.10% ret20=-0.19% volx=0.11 regime=DOWN"
+    }
+  ]
+}
