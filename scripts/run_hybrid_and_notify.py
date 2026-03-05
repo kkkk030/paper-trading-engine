@@ -67,7 +67,10 @@ def main():
         "state": broker.state,
         "recentTrades": recent_trades,
     }
-    (ROOT / "reports" / "latest_cycle.json").write_text(json.dumps(report, ensure_ascii=False, indent=2))
+    latest_json = json.dumps(report, ensure_ascii=False, indent=2)
+    (ROOT / "reports" / "latest_cycle.json").write_text(latest_json)
+    # GitHub Pages docs mirror
+    (ROOT / "docs" / "latest_cycle.json").write_text(latest_json)
 
     if args.notify and alerts:
         text = "\n".join(["[Paper] 체결 이벤트"] + alerts[:8])

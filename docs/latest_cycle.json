@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-03-05T04:27:42.915023+00:00",
+  "mode": "risk",
+  "prices": {
+    "KRW-BTC": 105995000.0,
+    "KRW-ETH": 3105000.0,
+    "KRW-SOL": 131600.0,
+    "KRW-XRP": 2079.0
+  },
+  "signals": [],
+  "alerts": [],
+  "state": {
+    "equity": 10000000.0,
+    "cash": 10000000.0,
+    "positions": {},
+    "cooldowns": {},
+    "daily": {
+      "date": "2026-03-05",
+      "start_equity": 10000000.0,
+      "realized": 0.0,
+      "fees": 0.0
+    },
+    "fee_total": 0.0
+  },
+  "recentTrades": []
+}

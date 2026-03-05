@@ -1,5 +1,5 @@
 async function loadData() {
-  const res = await fetch('../reports/latest_cycle.json?ts=' + Date.now());
+  const res = await fetch('./latest_cycle.json?ts=' + Date.now());
   if (!res.ok) throw new Error('latest_cycle.json load failed');
   return await res.json();
 }
