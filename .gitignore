@@ -1,0 +1,6 @@
+logs/
+data/shadow_*_state.json
+reports/shadow_compare_latest.json
+reports/shadow_daily_sent.txt
+__pycache__/
+*.pyc
