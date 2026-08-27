@@ -24,6 +24,7 @@ async function loadData() {
 }
 
 function won(n){return Number(n||0).toLocaleString('ko-KR')}
+function pct(n){return `${(Number(n||0)*100).toFixed(2)}%`}
 
 function render(d){
   document.getElementById('updatedAt').textContent = `업데이트: ${d.generatedAt} (${d.mode})`;
@@ -40,6 +41,22 @@ function render(d){
     <div class='item'>금일 실현손익: <b class='${dailyPct>=0?'good':'bad'}'>${won(s.daily.realized)} KRW (${dailyPct.toFixed(2)}%)</b></div>
     <div class='item'>금일 수수료: <b>${won(s.daily?.fees || 0)}</b> KRW / 누적 수수료: <b>${won(s.fee_total || 0)}</b> KRW</div>
   `;
+
+  const rc = d.riskControls || {};
+  document.getElementById('riskControls').innerHTML = `
+    <div class='item'>1회 거래 리스크: <b>${pct(rc.risk_per_trade)}</b> / 일 손실 중지: <b>${pct(rc.daily_loss_limit)}</b></div>
+    <div class='item'>최대 동시 포지션: <b>${rc.max_positions || '-'}</b> / 손절 확인: <b>${rc.stop_confirm_bars || '-'}회</b></div>
+    <div class='item'>ATR 손절: <b>${rc.stop_atr_mult || '-'}배</b> / 범위 <b>${pct(rc.stop_pct_min)}~${pct(rc.stop_pct_max)}</b></div>
+    <div class='item'>하드스탑: <b>${pct(rc.hard_stop_pct)}</b> / TP2 이후 트레일링: <b>${pct(rc.trailing_stop_pct)}</b></div>
+  `;
+
+  const sh = d.shadow?.shadow || {};
+  const diff = Number(sh.equity || 0) - Number(s.equity || 0);
+  document.getElementById('shadow').innerHTML = Object.keys(sh).length ? `
+    <div class='item'>Shadow Equity: <b>${won(sh.equity)}</b> KRW / Live 대비 <b class='${diff>=0?'good':'bad'}'>${diff>=0?'+':''}${won(diff)}</b> KRW</div>
+    <div class='item'>Shadow 현금: <b>${won(sh.cash)}</b> KRW / 포지션: <b>${sh.positions || 0}</b>개</div>
+    <div class='item'>Shadow 당일실현: <b class='${Number(sh.daily_realized || 0)>=0?'good':'bad'}'>${won(sh.daily_realized)}</b> KRW / 알림: <b>${sh.alerts || 0}</b>건</div>
+  ` : `<div class='muted'>섀도우 비교 데이터 없음</div>`;
 
   const sig = d.signals||[];
   document.getElementById('signals').innerHTML = sig.length ? sig.map(x=>`<div class='item'>${x.symbol} 점수=<b>${x.score}</b> 장세=${x.regime} 액션=<b>${x.action}</b><div class='muted'>${x.reason}</div></div>`).join('') : `<div class='muted'>리스크 모드 사이클 (신호 계산 생략)</div>`;

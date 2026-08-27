@@ -1,16 +1,65 @@
 {
-  "equity": 9873809.739584653,
-  "cash": 9873809.739584653,
-  "positions": {},
+  "equity": 10953258.900328409,
+  "cash": 7289162.95460812,
+  "positions": {
+    "KRW-BTC": {
+      "symbol": "KRW-BTC",
+      "qty": 0.008136551732259058,
+      "entry": 101372000.0,
+      "stop": 103346320.0,
+      "r_value": 3041160.0,
+      "tp1_done": true,
+      "tp2_done": true,
+      "high": 117439000.0
+    },
+    "KRW-ETH": {
+      "symbol": "KRW-ETH",
+      "qty": 0.2709160564568791,
+      "entry": 3043000.0,
+      "stop": 3179440.0,
+      "r_value": 91290.0,
+      "tp1_done": true,
+      "tp2_done": true,
+      "high": 3613000.0
+    },
+    "KRW-XRP": {
+      "symbol": "KRW-XRP",
+      "qty": 404.75584320848304,
+      "entry": 1996.0,
+      "stop": 1996.0,
+      "r_value": 59.879999999999995,
+      "tp1_done": true,
+      "tp2_done": true,
+      "high": 2212.0
+    },
+    "KRW-SOL": {
+      "symbol": "KRW-SOL",
+      "qty": 6.6900237443497605,
+      "entry": 126900.0,
+      "stop": 132704.0,
+      "r_value": 3807.0,
+      "tp1_done": true,
+      "tp2_done": true,
+      "high": 150800.0
+    }
+  },
   "cooldowns": {
-    "KRW-SOL": 1772724160.648003,
-    "KRW-ETH": 1772724160.648299
+    "KRW-XRP": 1775131980.574962,
+    "KRW-ETH": 1774549681.202056,
+    "KRW-SOL": 1776637380.559299,
+    "KRW-BTC": 1774621440.380481
   },
+  "fee_total": 31582.430526668817,
   "daily": {
-    "date": "2026-03-05",
-    "start_equity": 10000000.0,
-    "realized": -126190.26041534741,
-    "fees": 3938.674206895774
+    "date": "2026-08-27",
+    "start_equity": 10717688.158915378,
+    "realized": 238077.70773958132,
+    "fees": 756.1399337051316
   },
-  "fee_total": 3938.674206895774
+  "stop_breach_counts": {
+    "KRW-BTC": 0,
+    "KRW-ETH": 0,
+    "KRW-XRP": 0,
+    "KRW-SOL": 0
+  }
 }

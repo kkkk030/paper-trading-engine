@@ -40,12 +40,14 @@ class PaperBroker:
             state["daily"].setdefault("fees", 0.0)
             state.setdefault("positions", {})
             state.setdefault("cooldowns", {})
+            state.setdefault("stop_breach_counts", {})
             return state
         return {
             "equity": capital,
             "cash": capital,
             "positions": {},
             "cooldowns": {},
+            "stop_breach_counts": {},
             "fee_total": 0.0,
             "daily": {"date": self._today(), "start_equity": capital, "realized": 0.0, "fees": 0.0},
         }
@@ -103,16 +105,39 @@ class PaperBroker:
             px = prices[sym]
             pos.high = max(pos.high or pos.entry, px)
 
-            # stop loss
-            if px <= pos.stop:
+            # hard stop: immediate liquidation on extreme move (tail-risk cut)
+            hard_stop_pct = float(self.cfg.get("hard_stop_pct", 0.04))
+            hard_stop = pos.entry * (1 - hard_stop_pct)
+            if px <= hard_stop:
                 notional = px * pos.qty
                 fee = self._apply_fee(notional)
                 pnl = (px - pos.entry) * pos.qty - fee
                 self.state["cash"] += notional - fee
                 self.state["daily"]["realized"] += pnl
-                self._log_trade({"ts": datetime.now(timezone.utc).isoformat(), "symbol": sym, "side": "SELL", "kind": "STOP", "qty": pos.qty, "price": px, "fee": fee, "pnl": pnl})
-                alerts.append(f"[체결] {sym} STOP SELL qty={pos.qty:.6f} @ {px:,.0f} pnl={pnl:,.0f} fee={fee:,.0f}")
+                self._log_trade({"ts": datetime.now(timezone.utc).isoformat(), "symbol": sym, "side": "SELL", "kind": "HARD_STOP", "qty": pos.qty, "price": px, "fee": fee, "pnl": pnl, "hard_stop_pct": hard_stop_pct})
+                alerts.append(f"[체결] {sym} HARD_STOP SELL qty={pos.qty:.6f} @ {px:,.0f} pnl={pnl:,.0f} fee={fee:,.0f}")
                 self.state["cooldowns"][sym] = datetime.now(timezone.utc).timestamp()
+                self.state["stop_breach_counts"].pop(sym, None)
+                del self.state["positions"][sym]
+                continue
+
+            # soft stop: confirm N consecutive checks to reduce whipsaw
+            confirm_n = int(self.cfg.get("stop_confirm_bars", 1))
+            if px <= pos.stop:
+                self.state["stop_breach_counts"][sym] = int(self.state["stop_breach_counts"].get(sym, 0)) + 1
+            else:
+                self.state["stop_breach_counts"][sym] = 0
+
+            if self.state["stop_breach_counts"].get(sym, 0) >= confirm_n:
+                notional = px * pos.qty
+                fee = self._apply_fee(notional)
+                pnl = (px - pos.entry) * pos.qty - fee
+                self.state["cash"] += notional - fee
+                self.state["daily"]["realized"] += pnl
+                self._log_trade({"ts": datetime.now(timezone.utc).isoformat(), "symbol": sym, "side": "SELL", "kind": "STOP", "qty": pos.qty, "price": px, "fee": fee, "pnl": pnl, "confirm": confirm_n})
+                alerts.append(f"[체결] {sym} STOP SELL({confirm_n}확인) qty={pos.qty:.6f} @ {px:,.0f} pnl={pnl:,.0f} fee={fee:,.0f}")
+                self.state["cooldowns"][sym] = datetime.now(timezone.utc).timestamp()
+                self.state["stop_breach_counts"].pop(sym, None)
                 del self.state["positions"][sym]
                 continue
 
@@ -147,7 +172,7 @@ class PaperBroker:
 
             # trailing runner after tp2
             if pos.tp2_done:
-                trail_pct = 0.12
+                trail_pct = float(self.cfg.get("trailing_stop_pct", 0.12))
                 tstop = pos.high * (1 - trail_pct)
                 pos.stop = max(pos.stop, tstop)
 
@@ -175,7 +200,11 @@ class PaperBroker:
                     continue
 
                 risk_amt = self.state["equity"] * float(self.cfg["risk_per_trade"])
-                stop_pct = 0.03
+                atr = float(getattr(s, "atr_pct", 0.0) or 0.0) / 100.0
+                stop_pct = float(self.cfg.get("default_stop_pct", 0.03))
+                if atr > 0:
+                    stop_pct = atr * float(self.cfg.get("stop_atr_mult", 2.2))
+                stop_pct = max(float(self.cfg.get("stop_pct_min", 0.018)), min(float(self.cfg.get("stop_pct_max", 0.055)), stop_pct))
                 risk_per_unit = px * stop_pct
                 qty = risk_amt / risk_per_unit if risk_per_unit > 0 else 0
 
@@ -196,7 +225,7 @@ class PaperBroker:
                 self.state["daily"]["realized"] -= fee
                 pos = Position(symbol=s.symbol, qty=qty, entry=px, stop=px * (1 - stop_pct), r_value=px * stop_pct, high=px)
                 self.state["positions"][s.symbol] = asdict(pos)
-                self._log_trade({"ts": datetime.now(timezone.utc).isoformat(), "symbol": s.symbol, "side": "BUY", "kind": "ENTRY", "qty": qty, "price": px, "fee": fee, "score": s.score, "regime": s.regime})
+                self._log_trade({"ts": datetime.now(timezone.utc).isoformat(), "symbol": s.symbol, "side": "BUY", "kind": "ENTRY", "qty": qty, "price": px, "fee": fee, "score": s.score, "regime": s.regime, "stop_pct": stop_pct, "atr_pct": getattr(s, "atr_pct", 0.0)})
                 alerts.append(f"[체결] {s.symbol} BUY qty={qty:.6f} @ {px:,.0f} score={s.score} fee={fee:,.0f}")
 
         self._mark_to_market(prices)

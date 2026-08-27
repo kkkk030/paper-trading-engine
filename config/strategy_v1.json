@@ -1,12 +1,42 @@
 {
-  "symbols": ["KRW-BTC", "KRW-ETH", "KRW-SOL", "KRW-XRP"],
-  "timeframes": {"main": "minute15", "confirm": "minute60", "timing": "minute5"},
+  "symbols": [
+    "KRW-BTC",
+    "KRW-ETH",
+    "KRW-SOL",
+    "KRW-XRP"
+  ],
+  "timeframes": {
+    "main": "minute15",
+    "confirm": "minute60",
+    "timing": "minute5"
+  },
   "capital": 10000000,
   "risk_per_trade": 0.006,
   "daily_loss_limit": -0.05,
   "max_positions": 4,
-  "entry_score_threshold": 70,
-  "take_profit": {"tp1_r": 1.8, "tp1_size": 0.3, "tp2_r": 3.0, "tp2_size": 0.3, "runner_size": 0.4},
+  "entry_score_threshold": 58,
+  "entry_score_threshold_by_regime": {
+    "UP": 55,
+    "RANGE": 56,
+    "DOWN": 62,
+    "SHOCK": 100
+  },
+  "entry_gate_min_pass": 1,
+  "min_rr_tp1": 1.2,
+  "take_profit": {
+    "tp1_r": 1.8,
+    "tp1_size": 0.3,
+    "tp2_r": 3.0,
+    "tp2_size": 0.3,
+    "runner_size": 0.4
+  },
   "reentry_cooldown_minutes": 45,
-  "fee_rate": 0.0005
+  "fee_rate": 0.0005,
+  "stop_confirm_bars": 3,
+  "default_stop_pct": 0.03,
+  "stop_atr_mult": 2.2,
+  "stop_pct_min": 0.018,
+  "stop_pct_max": 0.055,
+  "hard_stop_pct": 0.04,
+  "trailing_stop_pct": 0.12
 }
