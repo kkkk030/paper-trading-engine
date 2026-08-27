@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass, asdict
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 
@@ -26,7 +26,8 @@ class PaperBroker:
         self.state = self._load_state()
 
     def _today(self):
-        return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        kst = timezone(timedelta(hours=9))
+        return datetime.now(kst).strftime("%Y-%m-%d")
 
     def _load_state(self):
         capital = float(self.cfg["capital"])
