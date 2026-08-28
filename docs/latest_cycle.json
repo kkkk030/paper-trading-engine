@@ -1,26 +1,50 @@
 {
-  "generatedAt": "2026-08-27T23:22:10.832808+00:00",
+  "generatedAt": "2026-08-28T00:20:11.782484+00:00",
   "mode": "risk",
   "prices": {
-    "KRW-BTC": 110998000.0,
-    "KRW-ETH": 3476000.0,
-    "KRW-SOL": 151300.0,
-    "KRW-XRP": 2010.0
+    "KRW-BTC": 111058000.0,
+    "KRW-ETH": 3475000.0,
+    "KRW-SOL": 151500.0,
+    "KRW-XRP": 2001.0
   },
   "signals": [],
   "alerts": [],
   "state": {
-    "equity": 10000000.0,
-    "cash": 10000000.0,
-    "positions": {},
+    "equity": 9999219.179468755,
+    "cash": 5000000.0,
+    "positions": {
+      "KRW-BTC": {
+        "symbol": "KRW-BTC",
+        "qty": 0.02250011818187075,
+        "entry": 111055000.0,
+        "stop": 109056010.0,
+        "r_value": 1998989.9999999998,
+        "tp1_done": false,
+        "tp2_done": false,
+        "high": 111058000.0
+      },
+      "KRW-SOL": {
+        "symbol": "KRW-SOL",
+        "qty": 16.504297388954136,
+        "entry": 151400.0,
+        "stop": 148674.8,
+        "r_value": 2725.2,
+        "tp1_done": false,
+        "tp2_done": false,
+        "high": 151500.0
+      }
+    },
     "cooldowns": {},
-    "stop_breach_counts": {},
-    "fee_total": 0.0,
+    "stop_breach_counts": {
+      "KRW-BTC": 0,
+      "KRW-SOL": 0
+    },
+    "fee_total": 2498.7506246876565,
     "daily": {
       "date": "2026-08-28",
       "start_equity": 10000000.0,
-      "realized": 0.0,
-      "fees": 0.0
+      "realized": -2498.7506246876565,
+      "fees": 2498.7506246876565
     },
     "reset": {
       "at": "2026-08-27T23:21:31.861627+00:00",
@@ -28,15 +52,42 @@
       "backup_dir": "/Users/hwabaek/.openclaw/workspace/projects/paper-trading-engine/logs/reset-backup-20260828-082131"
     }
   },
-  "recentTrades": [],
+  "recentTrades": [
+    {
+      "ts": "2026-08-28T00:18:13.818077+00:00",
+      "symbol": "KRW-BTC",
+      "side": "BUY",
+      "kind": "ENTRY",
+      "qty": 0.02250011818187075,
+      "price": 111055000.0,
+      "fee": 1249.3753123438282,
+      "score": 68.8,
+      "regime": "UP",
+      "stop_pct": 0.018,
+      "atr_pct": 0.148
+    },
+    {
+      "ts": "2026-08-28T00:18:13.818712+00:00",
+      "symbol": "KRW-SOL",
+      "side": "BUY",
+      "kind": "ENTRY",
+      "qty": 16.504297388954136,
+      "price": 151400.0,
+      "fee": 1249.3753123438282,
+      "score": 56.2,
+      "regime": "UP",
+      "stop_pct": 0.018,
+      "atr_pct": 0.58
+    }
+  ],
   "shadow": {
-    "generatedAt": "2026-08-27T23:22:10.832675+00:00",
+    "generatedAt": "2026-08-28T00:20:11.782318+00:00",
     "mode": "risk",
     "shadow": {
-      "equity": 10000000.0,
-      "cash": 10000000.0,
-      "positions": 0,
-      "daily_realized": 0.0,
+      "equity": 10001267.788390703,
+      "cash": 5998239.777332132,
+      "positions": 2,
+      "daily_realized": -1999.88017124831,
       "alerts": 0
     }
   },
