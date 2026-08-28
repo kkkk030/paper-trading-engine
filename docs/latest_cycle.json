@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-08-28T00:20:11.782484+00:00",
+  "generatedAt": "2026-08-28T04:20:09.802284+00:00",
   "mode": "risk",
   "prices": {
-    "KRW-BTC": 111058000.0,
-    "KRW-ETH": 3475000.0,
-    "KRW-SOL": 151500.0,
-    "KRW-XRP": 2001.0
+    "KRW-BTC": 110627000.0,
+    "KRW-ETH": 3453000.0,
+    "KRW-SOL": 148600.0,
+    "KRW-XRP": 1979.0
   },
   "signals": [],
   "alerts": [],
   "state": {
-    "equity": 9999219.179468755,
-    "cash": 5000000.0,
+    "equity": 9938783.292284375,
+    "cash": 7449662.718178559,
     "positions": {
       "KRW-BTC": {
         "symbol": "KRW-BTC",
@@ -21,30 +21,21 @@
         "r_value": 1998989.9999999998,
         "tp1_done": false,
         "tp2_done": false,
-        "high": 111058000.0
-      },
-      "KRW-SOL": {
-        "symbol": "KRW-SOL",
-        "qty": 16.504297388954136,
-        "entry": 151400.0,
-        "stop": 148674.8,
-        "r_value": 2725.2,
-        "tp1_done": false,
-        "tp2_done": false,
-        "high": 151500.0
+        "high": 112292000.0
       }
     },
-    "cooldowns": {},
-    "stop_breach_counts": {
-      "KRW-BTC": 0,
-      "KRW-SOL": 0
+    "cooldowns": {
+      "KRW-SOL": 1787883510.187054
     },
-    "fee_total": 2498.7506246876565,
+    "stop_breach_counts": {
+      "KRW-BTC": 0
+    },
+    "fee_total": 3724.194705817501,
     "daily": {
       "date": "2026-08-28",
       "start_equity": 10000000.0,
-      "realized": -2498.7506246876565,
-      "fees": 2498.7506246876565
+      "realized": -51586.657133784494,
+      "fees": 3724.194705817501
     },
     "reset": {
       "at": "2026-08-27T23:21:31.861627+00:00",
@@ -78,13 +69,24 @@
       "regime": "UP",
       "stop_pct": 0.018,
       "atr_pct": 0.58
+    },
+    {
+      "ts": "2026-08-28T02:18:30.186897+00:00",
+      "symbol": "KRW-SOL",
+      "side": "SELL",
+      "kind": "STOP",
+      "qty": 16.504297388954136,
+      "price": 148500.0,
+      "fee": 1225.4440811298446,
+      "pnl": -49087.906509096836,
+      "confirm": 3
     }
   ],
   "shadow": {
-    "generatedAt": "2026-08-28T00:20:11.782318+00:00",
+    "generatedAt": "2026-08-28T04:20:09.802112+00:00",
     "mode": "risk",
     "shadow": {
-      "equity": 10001267.788390703,
+      "equity": 9955193.998561898,
       "cash": 5998239.777332132,
       "positions": 2,
       "daily_realized": -1999.88017124831,
