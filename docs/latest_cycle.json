@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-09-10T12:20:26.561512+00:00",
+  "generatedAt": "2026-09-10T16:20:28.988995+00:00",
   "mode": "risk",
   "prices": {
-    "KRW-BTC": 105738000.0,
-    "KRW-ETH": 3342000.0,
-    "KRW-SOL": 137600.0,
-    "KRW-XRP": 1872.0
+    "KRW-BTC": 105208000.0,
+    "KRW-ETH": 3327000.0,
+    "KRW-SOL": 135400.0,
+    "KRW-XRP": 1843.0
   },
   "signals": [],
   "alerts": [],
@@ -22,7 +22,7 @@
     "stop_breach_counts": {},
     "fee_total": 17088.659467658836,
     "daily": {
-      "date": "2026-09-10",
+      "date": "2026-09-11",
       "start_equity": 9607875.412459597,
       "realized": 0.0,
       "fees": 0.0
@@ -204,12 +204,12 @@
     }
   ],
   "shadow": {
-    "generatedAt": "2026-09-10T12:20:26.561331+00:00",
+    "generatedAt": "2026-09-10T16:20:28.988812+00:00",
     "mode": "risk",
     "shadow": {
-      "equity": 9613671.849621385,
-      "cash": 5767469.729195483,
-      "positions": 2,
+      "equity": 9588236.965329008,
+      "cash": 9588236.965329008,
+      "positions": 0,
       "daily_realized": 0.0,
       "alerts": 0
     }
