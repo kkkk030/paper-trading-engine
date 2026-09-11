@@ -1,29 +1,42 @@
 {
-  "generatedAt": "2026-09-11T12:20:43.452830+00:00",
+  "generatedAt": "2026-09-11T16:20:44.729090+00:00",
   "mode": "risk",
   "prices": {
-    "KRW-BTC": 105147000.0,
-    "KRW-ETH": 3356000.0,
-    "KRW-SOL": 135500.0,
-    "KRW-XRP": 1813.0
+    "KRW-BTC": 105102000.0,
+    "KRW-ETH": 3457000.0,
+    "KRW-SOL": 137900.0,
+    "KRW-XRP": 1860.0
   },
   "signals": [],
   "alerts": [],
   "state": {
-    "equity": 9607875.412459597,
-    "cash": 9607875.412459597,
-    "positions": {},
+    "equity": 9642886.003715778,
+    "cash": 7956494.242367789,
+    "positions": {
+      "KRW-ETH": {
+        "symbol": "KRW-ETH",
+        "qty": 0.4878194276389902,
+        "entry": 3445000.0,
+        "stop": 3445000.0,
+        "r_value": 62009.99999999999,
+        "tp1_done": true,
+        "tp2_done": false,
+        "high": 3600000.0
+      }
+    },
     "cooldowns": {
       "KRW-SOL": 1788122942.439807,
       "KRW-BTC": 1788835934.293096,
       "KRW-XRP": 1788132826.08459,
       "KRW-ETH": 1788875218.289105
     },
-    "stop_breach_counts": {},
-    "fee_total": 17088.659467658836,
+    "stop_breach_counts": {
+      "KRW-ETH": 0
+    },
+    "fee_total": 18664.525284401763,
     "daily": {
-      "date": "2026-09-11",
-      "start_equity": 9607875.412459597,
+      "date": "2026-09-12",
+      "start_equity": 9680935.91907162,
       "realized": 0.0,
       "fees": 0.0
     },
@@ -201,15 +214,38 @@
       "fee": 1185.4215217634971,
       "pnl": -48872.74782506839,
       "confirm": 3
+    },
+    {
+      "ts": "2026-09-11T13:47:44.668511+00:00",
+      "symbol": "KRW-ETH",
+      "side": "BUY",
+      "kind": "ENTRY",
+      "qty": 0.6968848966271289,
+      "price": 3445000.0,
+      "fee": 1200.3842344402296,
+      "score": 61.7,
+      "regime": "UP",
+      "stop_pct": 0.018,
+      "atr_pct": 0.624
+    },
+    {
+      "ts": "2026-09-11T14:02:44.854213+00:00",
+      "symbol": "KRW-ETH",
+      "side": "SELL",
+      "kind": "TP1",
+      "qty": 0.2090654689881387,
+      "price": 3592000.0,
+      "fee": 375.48158230269706,
+      "pnl": 30357.14235895369
     }
   ],
   "shadow": {
-    "generatedAt": "2026-09-11T12:20:43.452523+00:00",
+    "generatedAt": "2026-09-11T16:20:44.728904+00:00",
     "mode": "risk",
     "shadow": {
-      "equity": 9588236.965329008,
-      "cash": 9588236.965329008,
-      "positions": 0,
+      "equity": 9593957.900331108,
+      "cash": 7669630.748566674,
+      "positions": 1,
       "daily_realized": 0.0,
       "alerts": 0
     }
