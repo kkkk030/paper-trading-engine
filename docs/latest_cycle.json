@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-09-14T16:20:59.997726+00:00",
+  "generatedAt": "2026-09-14T20:21:02.405799+00:00",
   "mode": "risk",
   "prices": {
-    "KRW-BTC": 106756000.0,
-    "KRW-ETH": 3417000.0,
-    "KRW-SOL": 138900.0,
-    "KRW-XRP": 1916.0
+    "KRW-BTC": 107139000.0,
+    "KRW-ETH": 3499000.0,
+    "KRW-SOL": 140900.0,
+    "KRW-XRP": 2000.0
   },
   "signals": [],
   "alerts": [],
   "state": {
-    "equity": 9673392.773565486,
-    "cash": 4816877.012015188,
+    "equity": 9774071.475101704,
+    "cash": 3163299.1590149906,
     "positions": {
       "KRW-BTC": {
         "symbol": "KRW-BTC",
@@ -21,17 +21,27 @@
         "r_value": 1904381.9999999998,
         "tp1_done": false,
         "tp2_done": false,
-        "high": 106756000.0
+        "high": 107153000.0
       },
       "KRW-XRP": {
         "symbol": "KRW-XRP",
-        "qty": 1266.9657308227959,
+        "qty": 506.78629232911834,
         "entry": 1900.0,
-        "stop": 1865.8,
+        "stop": 1900.0,
         "r_value": 34.199999999999996,
+        "tp1_done": true,
+        "tp2_done": true,
+        "high": 2004.0
+      },
+      "KRW-SOL": {
+        "symbol": "KRW-SOL",
+        "qty": 22.423534041596156,
+        "entry": 141000.0,
+        "stop": 138462.0,
+        "r_value": 2538.0,
         "tp1_done": false,
         "tp2_done": false,
-        "high": 1918.0
+        "high": 141000.0
       }
     },
     "cooldowns": {
@@ -42,14 +52,15 @@
     },
     "stop_breach_counts": {
       "KRW-BTC": 0,
-      "KRW-XRP": 0
+      "KRW-XRP": 0,
+      "KRW-SOL": 0
     },
-    "fee_total": 21910.809588504137,
+    "fee_total": 24246.907010580137,
     "daily": {
       "date": "2026-09-15",
       "start_equity": 9644762.646022994,
-      "realized": 0.0,
-      "fees": 0.0
+      "realized": 63799.51372687395,
+      "fees": 2336.0974220759977
     },
     "reset": {
       "at": "2026-08-27T23:21:31.861627+00:00",
@@ -58,32 +69,6 @@
     }
   },
   "recentTrades": [
-    {
-      "ts": "2026-08-28T00:18:13.818077+00:00",
-      "symbol": "KRW-BTC",
-      "side": "BUY",
-      "kind": "ENTRY",
-      "qty": 0.02250011818187075,
-      "price": 111055000.0,
-      "fee": 1249.3753123438282,
-      "score": 68.8,
-      "regime": "UP",
-      "stop_pct": 0.018,
-      "atr_pct": 0.148
-    },
-    {
-      "ts": "2026-08-28T00:18:13.818712+00:00",
-      "symbol": "KRW-SOL",
-      "side": "BUY",
-      "kind": "ENTRY",
-      "qty": 16.504297388954136,
-      "price": 151400.0,
-      "fee": 1249.3753123438282,
-      "score": 56.2,
-      "regime": "UP",
-      "stop_pct": 0.018,
-      "atr_pct": 0.58
-    },
     {
       "ts": "2026-08-28T02:18:30.186897+00:00",
       "symbol": "KRW-SOL",
@@ -285,16 +270,49 @@
       "regime": "UP",
       "stop_pct": 0.018,
       "atr_pct": 0.455
+    },
+    {
+      "ts": "2026-09-14T18:32:11.321762+00:00",
+      "symbol": "KRW-XRP",
+      "side": "SELL",
+      "kind": "TP1",
+      "qty": 380.08971924683874,
+      "price": 1970.0,
+      "fee": 374.3883734581362,
+      "pnl": 26231.891973820577
+    },
+    {
+      "ts": "2026-09-14T20:18:24.043377+00:00",
+      "symbol": "KRW-XRP",
+      "side": "SELL",
+      "kind": "TP2",
+      "qty": 380.0897192468388,
+      "price": 2004.0,
+      "fee": 380.84989868533245,
+      "pnl": 39148.4809029859
+    },
+    {
+      "ts": "2026-09-14T20:18:24.044029+00:00",
+      "symbol": "KRW-SOL",
+      "side": "BUY",
+      "kind": "ENTRY",
+      "qty": 22.423534041596156,
+      "price": 141000.0,
+      "fee": 1580.8591499325291,
+      "score": 60.7,
+      "regime": "UP",
+      "stop_pct": 0.018,
+      "atr_pct": 0.41
     }
   ],
   "shadow": {
-    "generatedAt": "2026-09-14T16:20:59.997540+00:00",
+    "generatedAt": "2026-09-14T20:21:02.405601+00:00",
     "mode": "risk",
     "shadow": {
-      "equity": 9607759.871635873,
-      "cash": 1925667.286042399,
+      "equity": 9773455.17773697,
+      "cash": 2530515.7398895756,
       "positions": 4,
-      "daily_realized": 0.0,
+      "daily_realized": 31102.467925255794,
       "alerts": 0
     }
   },
