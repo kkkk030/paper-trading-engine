@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-09-15T16:21:15.353463+00:00",
+  "generatedAt": "2026-09-15T20:21:18.106721+00:00",
   "mode": "risk",
   "prices": {
-    "KRW-BTC": 104562000.0,
-    "KRW-ETH": 3314000.0,
-    "KRW-SOL": 135800.0,
-    "KRW-XRP": 1902.0
+    "KRW-BTC": 103621000.0,
+    "KRW-ETH": 3279000.0,
+    "KRW-SOL": 132800.0,
+    "KRW-XRP": 1738.0
   },
   "signals": [],
   "alerts": [],
@@ -267,13 +267,13 @@
     }
   ],
   "shadow": {
-    "generatedAt": "2026-09-15T16:21:15.353281+00:00",
+    "generatedAt": "2026-09-15T20:21:18.106536+00:00",
     "mode": "risk",
     "shadow": {
-      "equity": 9445343.332886465,
-      "cash": 3811958.0505902125,
-      "positions": 3,
-      "daily_realized": 0.0,
+      "equity": 9338121.826682277,
+      "cash": 7465006.050313395,
+      "positions": 1,
+      "daily_realized": -171678.00652915216,
       "alerts": 0
     }
   },
